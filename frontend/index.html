@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Inventario Institucional</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="marca">Sistema de Gestión de Inventario</div>
+        <div class="usuario-sesion">
+            <span id="usuarioSesion">Sesión no iniciada</span>
+            &nbsp;|&nbsp; Backend: <span id="etiquetaBackend">-</span>
+            <select id="selectorBackend" style="width:auto;display:inline-block;margin:0 0 0 8px;padding:4px;">
+                <option value="csharp">C# / .NET 8</option>
+                <option value="vbnet">VB.NET / .NET 4.8</option>
+            </select>
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a href="index.html">Inicio</a>
+        <a href="activos.html">Activos</a>
+        <a href="movimientos.html">Movimientos</a>
+        <a href="reportes.html">Reportes</a>
+    </nav>
+
+    <main>
+        <div class="grid cols-2">
+            <section class="card">
+                <h2>Iniciar sesión</h2>
+                <div id="mensajeLogin" class="mensaje"></div>
+                <form id="formLogin">
+                    <label for="loginUsuario">Usuario</label>
+                    <input type="text" id="loginUsuario" placeholder="admin" autocomplete="username">
+                    <label for="loginClave">Contraseña</label>
+                    <input type="password" id="loginClave" placeholder="admin123" autocomplete="current-password">
+                    <div class="botones">
+                        <button type="submit">Ingresar</button>
+                    </div>
+                </form>
+                <p class="nota">
+                    Credenciales de prueba: <strong>admin / admin123</strong> y <strong>consulta / 123456</strong>.
+                    El hash de contraseñas se guarda con MD5 (vulnerabilidad intencional para Snyk).
+                </p>
+            </section>
+
+            <section class="card">
+                <h2>Resumen del inventario</h2>
+                <div id="mensajeDashboard" class="mensaje"></div>
+                <div class="grid cols-3" id="metricas">
+                    <div class="metrica">
+                        <div class="valor" id="metTotal">-</div>
+                        <div class="etiqueta">Activos registrados</div>
+                    </div>
+                    <div class="metrica">
+                        <div class="valor" id="metValor">-</div>
+                        <div class="etiqueta">Valor total</div>
+                    </div>
+                    <div class="metrica">
+                        <div class="valor" id="metCategorias">-</div>
+                        <div class="etiqueta">Categorías</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid cols-2">
+            <section class="card">
+                <h3>Activos por categoría</h3>
+                <table id="tablaCategorias">
+                    <thead><tr><th>Categoría</th><th>Cantidad</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section class="card">
+                <h3>Activos por estado</h3>
+                <table id="tablaEstados">
+                    <thead><tr><th>Estado</th><th>Cantidad</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        Sistema de demostración para Snyk Code y Snyk Open Source &mdash; MAG
+    </footer>
+
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

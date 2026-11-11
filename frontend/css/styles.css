@@ -1,0 +1,228 @@
+/* ============================================================
+   Sistema de Gestión de Inventario Institucional
+   Estilos base
+   ============================================================ */
+
+:root {
+    --verde: #1b5e20;
+    --verde-claro: #2e7d32;
+    --verde-suave: #e8f5e9;
+    --azul: #0d47a1;
+    --gris: #f4f6f8;
+    --gris-borde: #dfe3e8;
+    --texto: #263238;
+    --texto-suave: #607d8b;
+    --blanco: #ffffff;
+    --rojo: #c62828;
+    --amarillo: #f9a825;
+    --sombra: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--gris);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+/* ---------- Encabezado ---------- */
+header.app-header {
+    background: linear-gradient(135deg, var(--verde), var(--verde-claro));
+    color: var(--blanco);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--sombra);
+}
+
+header.app-header .marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+header.app-header .marca .logo {
+    background: var(--blanco);
+    color: var(--verde);
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+header.app-header .usuario-sesion {
+    font-size: .9rem;
+    opacity: .95;
+}
+
+/* ---------- Navegación ---------- */
+nav.app-nav {
+    background: var(--verde-claro);
+    padding: 0 24px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+nav.app-nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 12px 16px;
+    font-size: .92rem;
+    border-bottom: 3px solid transparent;
+    transition: background .15s, border-color .15s;
+}
+
+nav.app-nav a:hover { background: rgba(255, 255, 255, .12); }
+nav.app-nav a.activo { border-bottom-color: var(--blanco); background: rgba(255, 255, 255, .1); }
+
+/* ---------- Layout ---------- */
+main {
+    max-width: 1120px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+.card {
+    background: var(--blanco);
+    border: 1px solid var(--gris-borde);
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h2, .card h3 {
+    margin-top: 0;
+    color: var(--verde);
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+}
+
+.grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* ---------- Métricas ---------- */
+.metrica {
+    background: var(--verde-suave);
+    border: 1px solid var(--gris-borde);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.metrica .valor { font-size: 1.9rem; font-weight: 700; color: var(--verde); }
+.metrica .etiqueta { color: var(--texto-suave); font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; }
+
+/* ---------- Formularios ---------- */
+label { display: block; font-size: .85rem; color: var(--texto-suave); margin-bottom: 4px; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--gris-borde);
+    border-radius: 7px;
+    font-size: .95rem;
+    font-family: inherit;
+    margin-bottom: 12px;
+    background: var(--blanco);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--verde-claro);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, .15);
+}
+
+.botones { display: flex; gap: 10px; flex-wrap: wrap; }
+
+button {
+    background: var(--verde);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: .92rem;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+button:hover { background: var(--verde-claro); }
+button.secundario { background: var(--texto-suave); }
+button.secundario:hover { background: #78909c; }
+button.peligro { background: var(--rojo); }
+button.peligro:hover { background: #e53935; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ---------- Tablas ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+thead th {
+    background: var(--verde-suave);
+    color: var(--verde);
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid var(--gris-borde);
+}
+
+tbody td { padding: 10px; border-bottom: 1px solid var(--gris-borde); }
+tbody tr:hover { background: #fafafa; }
+
+/* ---------- Insignias de estado ---------- */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+.badge.Disponible { background: #e8f5e9; color: #1b5e20; }
+.badge.Asignado { background: #e3f2fd; color: #0d47a1; }
+.badge.Mantenimiento { background: #fff8e1; color: #f9a825; }
+.badge.Baja { background: #ffebee; color: #c62828; }
+.badge.Entrada { background: #e8f5e9; color: #1b5e20; }
+.badge.Salida { background: #ffebee; color: #c62828; }
+
+/* ---------- Mensajes ---------- */
+.mensaje {
+    padding: 10px 14px;
+    border-radius: 7px;
+    margin-bottom: 14px;
+    font-size: .9rem;
+    display: none;
+}
+
+.mensaje.ok { background: var(--verde-suave); color: var(--verde); display: block; }
+.mensaje.error { background: #ffebee; color: var(--rojo); display: block; }
+
+.nota {
+    font-size: .8rem;
+    color: var(--texto-suave);
+    background: var(--gris);
+    border-left: 4px solid var(--amarillo);
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+footer.app-footer {
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: .8rem;
+    padding: 24px;
+}

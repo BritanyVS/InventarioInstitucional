@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activos | Inventario Institucional</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="marca">Sistema de Gestión de Inventario</div>
+        <div class="usuario-sesion">
+            <span id="usuarioSesion">Sesión no iniciada</span>
+            &nbsp;|&nbsp; Backend: <span id="etiquetaBackend">-</span>
+            <select id="selectorBackend" style="width:auto;display:inline-block;margin:0 0 0 8px;padding:4px;">
+                <option value="csharp">C# / .NET 8</option>
+                <option value="vbnet">VB.NET / .NET 4.8</option>
+            </select>
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a href="index.html">Inicio</a>
+        <a href="activos.html">Activos</a>
+        <a href="movimientos.html">Movimientos</a>
+        <a href="reportes.html">Reportes</a>
+    </nav>
+
+    <main>
+        <section class="card">
+            <h2>Registrar activo</h2>
+            <div id="mensajeActivo" class="mensaje"></div>
+            <form id="formActivo">
+                <div class="grid cols-2">
+                    <div>
+                        <label for="codigo">Código</label>
+                        <input type="text" id="codigo" placeholder="MAG-0007" required>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" placeholder="Laptop Lenovo ThinkPad" required>
+                        <label for="categoria">Categoría</label>
+                        <input type="text" id="categoria" placeholder="Equipo de Cómputo" required>
+                        <label for="marca">Marca</label>
+                        <input type="text" id="marca" placeholder="Lenovo">
+                    </div>
+                    <div>
+                        <label for="modelo">Modelo</label>
+                        <input type="text" id="modelo" placeholder="ThinkPad E14">
+                        <label for="numeroSerie">Número de serie</label>
+                        <input type="text" id="numeroSerie" placeholder="SN-XX-0007">
+                        <label for="ubicacion">Ubicación</label>
+                        <input type="text" id="ubicacion" placeholder="Bodega Central">
+                        <label for="valor">Valor (Q)</label>
+                        <input type="number" id="valor" step="0.01" min="0" placeholder="8500.00">
+                    </div>
+                </div>
+                <div class="botones">
+                    <button type="submit">Guardar activo</button>
+                    <button type="reset" class="secundario">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Consulta de activos</h2>
+            <form id="formBusqueda">
+                <div class="grid cols-2">
+                    <div>
+                        <label for="termino">Buscar por código, nombre o categoría</label>
+                        <input type="text" id="termino" placeholder="Laptop">
+                    </div>
+                    <div style="display:flex;align-items:flex-end;">
+                        <button type="submit">Buscar</button>
+                        <button type="button" class="secundario" onclick="cargarActivos()" style="margin-left:8px;">Ver todos</button>
+                    </div>
+                </div>
+            </form>
+            <div id="resultadoBusqueda" style="margin-bottom:12px;color:#607d8b;font-size:.9rem;"></div>
+            <p class="nota">
+                El buscador envía el término por concatenación SQL en el backend (SQL Injection).
+                Prueba: <code>' OR '1'='1</code>
+            </p>
+            <table id="tablaActivos">
+                <thead>
+                    <tr>
+                        <th>Código</th><th>Nombre</th><th>Categoría</th><th>Marca</th>
+                        <th>Estado</th><th>Ubicación</th><th>Valor</th><th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        Sistema de demostración para Snyk Code y Snyk Open Source &mdash; MAG
+    </footer>
+
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/activos.js"></script>
+</body>
+</html>

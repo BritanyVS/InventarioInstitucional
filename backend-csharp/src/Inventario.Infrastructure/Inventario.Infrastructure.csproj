@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Inventario.Infrastructure</RootNamespace>
+    <!-- Se silencian las alertas NU190x de NuGet para que la demostración se centre en Snyk. -->
+    <NoWarn>$(NoWarn);NU1902;NU1903;NU1904</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inventario.Application\Inventario.Application.csproj" />
+    <ProjectReference Include="..\Inventario.Domain\Inventario.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+
+    <!--
+      ⚠️ DEPENDENCIAS VULNERABLES INTENCIONALES (Snyk Open Source - NuGet)
+      Estas versiones contienen vulnerabilidades conocidas y son detectadas por Snyk:
+
+        * Newtonsoft.Json 12.0.1  -> CVE-2024-21907 (Denial of Service).
+                                    Corregido en 13.0.1.
+        * log4net 2.0.8           -> CVE-2018-1285 (XXE - XML External Entity).
+                                    Corregido en 2.0.10.
+    -->
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+  </ItemGroup>
+
+</Project>

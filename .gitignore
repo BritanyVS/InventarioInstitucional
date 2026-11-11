@@ -1,0 +1,24 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+publish/
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json.bak
+
+# Logs
+*.log
+logs/
+
+# Snyk
+.snyk/
+snyk-report*.json
+reportes-snyk/
+
+# Entorno
+*.env
+appsettings.Development.local.json
